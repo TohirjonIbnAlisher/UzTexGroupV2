@@ -64,7 +64,7 @@ public class JobController : LocalizedControllerBase
     }
 
     [Authorize(Roles = "Admin")]
-    [HttpDelete("id : Guid")]
+    [HttpDelete("jobId : Guid")]
     public async ValueTask<ActionResult<JobDto>> DeleteAdressAsync(Guid jobId)
     {
         var deletedAdress = await this.jobService
