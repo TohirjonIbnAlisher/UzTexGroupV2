@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "apis1": {
+      "apiEndpoint": "https://uztexgroupapi.azure-api.net/uxtexgroup",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/UzTexGroupapi/apis/UzTexGroupV2",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/uztextgroup/databases/UztextGroup",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnectionString"
+    }
+  }
+}

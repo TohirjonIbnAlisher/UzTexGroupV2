@@ -40,7 +40,7 @@ public class UserController : LocalizedControllerBase
     }
 
     [Authorize]
-    [HttpGet("{id:guid}")]
+    [HttpGet("{userId:guid}")]
     public async ValueTask<ActionResult<UserDto>> GetUserByIdAsync(
         Guid userId)
     {

@@ -12,18 +12,17 @@ using UzTexGroupV2.Infrastructure.DbContexts;
 namespace UzTexGroupV2.Infrastructure.Migrations
 {
     [DbContext(typeof(UzTexGroupDbContext))]
-    [Migration("20230217045034_init")]
+    [Migration("20230301170415_init")]
     partial class init
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("UzTexGroupV2.Domain.Entities.Address", b =>
                 {
@@ -207,19 +206,19 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("08b9e0e9-cfe8-4445-9504-9439d028f568"),
+                            Id = new Guid("9c6007cb-635f-4db1-932c-b4419141041a"),
                             Code = "uz",
                             Name = "Uzbek"
                         },
                         new
                         {
-                            Id = new Guid("f2ab55fb-16ee-4dac-bae5-71a91a35356a"),
+                            Id = new Guid("e619238b-c2ad-420f-a7fe-7a2a95ca567a"),
                             Code = "en",
                             Name = "English"
                         },
                         new
                         {
-                            Id = new Guid("4f0f288f-6f0b-415b-ae08-1ee81caf8574"),
+                            Id = new Guid("e0f77cf9-6614-4929-9e58-7aaed7d939c9"),
                             Code = "ru",
                             Name = "Russian"
                         });
@@ -237,10 +236,6 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -299,7 +294,7 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("42799370-ac30-494a-a3fc-4ec9eaa390ee"),
+                            Id = new Guid("1cf67e1b-18bb-417c-9fd2-78baa150f9a2"),
                             Email = "elchinuralov07@gmail.com",
                             FirstName = "Elchin",
                             LastName = "Uralov",

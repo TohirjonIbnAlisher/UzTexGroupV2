@@ -3,14 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace UzTexGroupV2.Infrastructure.Migrations
 {
-    /// <inheritdoc />
     public partial class init : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -63,8 +59,7 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -175,15 +170,15 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("08b9e0e9-cfe8-4445-9504-9439d028f568"), "uz", "Uzbek" },
-                    { new Guid("4f0f288f-6f0b-415b-ae08-1ee81caf8574"), "ru", "Russian" },
-                    { new Guid("f2ab55fb-16ee-4dac-bae5-71a91a35356a"), "en", "English" }
+                    { new Guid("9c6007cb-635f-4db1-932c-b4419141041a"), "uz", "Uzbek" },
+                    { new Guid("e0f77cf9-6614-4929-9e58-7aaed7d939c9"), "ru", "Russian" },
+                    { new Guid("e619238b-c2ad-420f-a7fe-7a2a95ca567a"), "en", "English" }
                 });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "Id", "Email", "ExpiredRefreshToken", "FirstName", "LastName", "PasswordHash", "RefreshToken", "Salt", "UserRole" },
-                values: new object[] { new Guid("42799370-ac30-494a-a3fc-4ec9eaa390ee"), "elchinuralov07@gmail.com", null, "Elchin", "Uralov", "v7DrXBP/nQ3sHmWUgp6nkmBkJCeKxVK4+iljRqJfgDI=", null, "a9feaa2d-8692-4d2e-bf64-3d8200ad8c8b", 1 });
+                values: new object[] { new Guid("1cf67e1b-18bb-417c-9fd2-78baa150f9a2"), "elchinuralov07@gmail.com", null, "Elchin", "Uralov", "v7DrXBP/nQ3sHmWUgp6nkmBkJCeKxVK4+iljRqJfgDI=", null, "a9feaa2d-8692-4d2e-bf64-3d8200ad8c8b", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_AddressId",
@@ -218,7 +213,6 @@ namespace UzTexGroupV2.Infrastructure.Migrations
                 unique: true);
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

@@ -34,7 +34,6 @@ namespace UzTexGroupV2
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.WebHost.UseUrls("http://*:5092");
             var app = builder.Build();
             
             app.UseSwagger();
