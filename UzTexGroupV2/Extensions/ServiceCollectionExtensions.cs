@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using Serilog.Events;
 using UzTexGroupV2.Application.Services;
 using UzTexGroupV2.Domain.Enums;
 using UzTexGroupV2.Infrastructure.Authentication;
@@ -66,12 +67,16 @@ public static class ServiceCollectionExtensions
     }
 
     public static WebApplicationBuilder AdSeridLogg(
-           this WebApplicationBuilder builder,
-           IConfiguration configuration)
+        this WebApplicationBuilder builder,
+        IConfiguration configuration)
     {
         var logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration)
-            .Enrich.FromLogContext()
+            .WriteTo.Console(LogEventLevel.Information)
+            .WriteTo.File(
+                Path.Join("logs", "log.log"),
+                LogEventLevel.Information,
+                rollingInterval: RollingInterval.Day
+            )
             .CreateLogger();
 
         builder.Logging.ClearProviders();
@@ -79,16 +84,15 @@ public static class ServiceCollectionExtensions
 
         return builder;
     }
+
     public static IServiceCollection AutentificationService(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("UserPolicy", options =>
-            {
-                options.RequireRole(Role.Admin.ToString(), Role.SuperAdmin.ToString());
-            });
+            options.AddPolicy("UserPolicy",
+                options => { options.RequireRole(Role.Admin.ToString(), Role.SuperAdmin.ToString()); });
         });
 
         services.AddAuthentication(options =>
@@ -113,6 +117,7 @@ public static class ServiceCollectionExtensions
 
         return services;
     }
+
     private static void AddSwaggerService(this IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
